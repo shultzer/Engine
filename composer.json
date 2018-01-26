@@ -1,0 +1,12 @@
+{
+    "name": "sergeyskorohod/engine",
+    "authors": [
+        {
+            "name": "Sergei",
+            "email": "skorohods@mail.ru"
+        }
+    ],
+    "require": {
+        "symfony/var-dumper": "^4.0"
+    }
+}
