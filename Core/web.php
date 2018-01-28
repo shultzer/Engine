@@ -1,8 +1,7 @@
 <?php
 
-    use Core\Lib\Router;
 
-    include 'Lib/Router.php';
+    include 'Lib/Application.php';
 
     /*
      *
@@ -10,4 +9,5 @@
      *
      * */
 
-    Router::get('main', 'Maincontroller@index');
+    Application::get('', 'Maincontroller@index');
+    Application::get('another', 'Maincontroller@anotheraction');
