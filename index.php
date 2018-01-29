@@ -1,18 +1,21 @@
 <?php
 
+    use Core\Lib\Application;
+    use Core\Lib\Db;
+
     error_reporting(E_ALL);
     ini_set('display_errors', 1);
 
-
-
-    require 'Core/web.php';
     require 'Core/Bootstrap.php';
-    require 'Core/Lib/Autoloader.php';
-
-    new Autoloader;
+        /*
+         * Connect to database
+         * */
     $db  = Db::getinstance()->db($config);
+
+    /*
+     * Run application
+     * */
     $App = new Application;
     $App->run();
-
 
 

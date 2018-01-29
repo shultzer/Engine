@@ -1,7 +1,8 @@
 <?php
 
 
-    include 'Lib/Application.php';
+    use Core\Lib\Application;
+
 
     /*
      *
@@ -9,5 +10,5 @@
      *
      * */
 
-    Application::get('', 'Maincontroller@index');
+    Application::get('', '\Controllers\Maincontroller@index');
     Application::get('another', 'Maincontroller@anotheraction');

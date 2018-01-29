@@ -1,5 +1,7 @@
 <?php
 
+    namespace Core\Lib;
+
     class Application
     {
 
@@ -23,7 +25,8 @@
             }
             else {
                 header("HTTP/1.0 404 Not Found");
-                include 'views/404.php';
+                include 'views/errors/404.php';
+               die();
             }
 
 
@@ -33,14 +36,19 @@
             static::$routes[ 'GET' ][ $route ] = $action;
         }
 
+        public static function post ( string $route, string $action ) {
+            static::$routes[ 'POST' ][ $route ] = $action;
+        }
+
         public function geturl () {
 
             return $this->url;
         }
 
         public function run () {
-            $action = $this->action;
-            $app    = new $this->controller;
+            $action     = $this->action;
+            $controller = $this->controller;
+            $app        = new $controller;
             $app->$action();
         }
 

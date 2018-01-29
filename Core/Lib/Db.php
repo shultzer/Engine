@@ -1,4 +1,5 @@
 <?php
+    namespace Core\Lib;
 
 
     class Db
@@ -30,10 +31,9 @@
 
         public function db ( $config ) {
             try {
-                return static::$dbh = new PDO("mysql:dbname={$config['dbname']};host={$config['host']}", $config[ 'user' ], $config[ 'pwd' ]);
-            } catch ( PDOException $e ) {
+                return static::$dbh = new \PDO("mysql:dbname={$config['dbname']};host={$config['host']}", $config[ 'user' ], $config[ 'pwd' ]);
+            } catch ( \PDOException $e ) {
                 echo 'Подключение не удалось: ' . $e->getMessage();
             }
-
         }
     }

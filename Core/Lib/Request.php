@@ -1,4 +1,5 @@
 <?php
+    namespace Core\Lib;
 
 
     namespace Core\Lib;
