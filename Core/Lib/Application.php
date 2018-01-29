@@ -45,11 +45,11 @@
             return $this->url;
         }
 
-        public function run () {
+        public function run ($db) {
             $action     = $this->action;
             $controller = $this->controller;
             $app        = new $controller;
-            $app->$action();
+            $app->$action($db);
         }
 
 

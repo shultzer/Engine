@@ -9,7 +9,12 @@
     namespace Models;
 
 
-    class MainModel
+    use Core\Lib\Model;
+
+    class MainModel extends Model
     {
+       protected $db;
+
+
 
     }

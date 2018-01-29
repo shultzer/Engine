@@ -16,6 +16,6 @@
      * Run application
      * */
     $App = new Application;
-    $App->run();
+    $App->run($db);
 
 

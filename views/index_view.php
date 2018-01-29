@@ -59,7 +59,12 @@
 <main role="main" class="container">
     <h1 class="mt-5">Clean php engine</h1>
     <h3><?= $a ?></h3>
-
+    <ul>
+        <?php
+            foreach ( $data as $item ): ?>
+                <li><?= $item['1_col'] ?></li>
+        <?php endforeach; ?>
+    </ul>
 </main>
 
 <footer class="footer">
