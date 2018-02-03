@@ -6,17 +6,17 @@
     class Model
     {
         protected $db;
+        protected $table;
+        
 
-        public function __construct ( $config ) {
-
-            try {
-                $this->db = new \PDO("mysql:dbname={$config['dbname']};host={$config['host']}", $config[ 'user' ], $config[ 'pwd' ]);
-            } catch ( \PDOException $e ) {
-                echo 'Подключение не удалось: ' . $e->getMessage();
-            }
-
-        }
         public static function all ($db ) {
-            return $db->query('SELECT * from test')->fetchAll();
+            return $db->query('SELECT * from {$this->table}')->fetchAll();
+        }
+
+        public static function where ( $db, array $data ) {
+
+            $res = $db->prepare("SELECT * from self::table WHERE ? = ?");
+            $res->execute($data);
+            return $res;
         }
     }

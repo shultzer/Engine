@@ -7,11 +7,6 @@
 
         protected static $dbh;
 
-        protected static $dsn;
-
-        protected static $user;
-
-        protected static $password;
 
         private function __construct () {
 

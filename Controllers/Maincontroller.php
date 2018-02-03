@@ -9,12 +9,10 @@ class Maincontroller extends Controller
 
     public function index ( $db ) {
 
-        $data = MainModel::all($db);
-        $a    = 'hello from view method';
+       // $arr = MainModel::gettable()::where([]);
+        //$a    = 'Hello from view method';
 
-        return $this->view('index_view', [
-          'a' => $a,
-            'data' =>$data]);
+        return $this->view('index_view');
 
     }
 }
