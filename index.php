@@ -10,12 +10,12 @@
         /*
          * Connect to database
          * */
-    $db  = Db::getinstance()->db($config);
+    //$db  = Db::getinstance()->db($config);
 
     /*
      * Run application
      * */
     $App = new Application;
-    $App->run($db);
+    $App->run();
 
 

@@ -3,6 +3,9 @@
 <!-- Begin page content -->
 <main role="main" class="container">
     <h1 class="mt-5">Курс Биткоина</h1>
+    <script type="text/javascript"
+            src="https://www.gstatic.com/charts/loader.js"></script>
+
     <div class="container" id="chart_div"></div>
     <br>
     <div class="container" id="app">
@@ -10,12 +13,12 @@
             <tr class="table-primary">
                 <th>Валюта</th>
                 <th>Курс покупки</th>
-                <th>Курс продажи</th>
+                <!--<th>Курс продажи</th>-->
             </tr>
             <tr class="table-info">
                 <td>USD</td>
-                <td v-cloak>{{curr.buy+curr.symbol}}</td>
-                <td v-cloak>{{curr.sell+curr.symbol}}</td>
+                <td>{{curr.buy+curr.symbol}}</td>
+                <!--<td>{{curr.sell+curr.symbol}}</td>-->
             </tr>
         </table>
         <h3>Курс доллара к белорусскому рублю по НБРБ</h3>
@@ -48,7 +51,7 @@
 
         var options = {
             hAxis: {
-                title: 'Seconds'
+                title: 'x 10 Seconds'
             },
             vAxis: {
                 title: 'USD'
@@ -56,31 +59,32 @@
             backgroundColor: '#c4cbf8'
         };
 
-
         var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
 
         chart.draw(data, options);
     }
 
-    console.log(store.lenght);
     setInterval(function () {
 
         axios.get('https://blockchain.info/ru/ticker').then(function (response) {
-
-            store.splice(0, 0, [store.length, response.data.USD
-                .buy]);
-            document.getElementById('chart_div').innerHTML = '';
+            if (store.length > 200) {
+                store.shift();
+                store.splice(0, 0, [store.length, response.data.USD
+                    .buy]);
+            } else {
+                store.splice(0, 0, [store.length, response.data.USD
+                    .buy]);
+            }
             drawBackgroundColor();
 
             //console.log(store);
 
         });
-    }, 1000);
+    }, 10000);
 
     // console.log(store);
-
-
 </script>
+
 <script>
     app = new Vue({
         el: '#app',
@@ -88,19 +92,36 @@
             {
                 curr: {},
                 nb: {},
-                storage: []
+                //storage: []
             },
         mounted: function () {
 
-            axios.get('https://blockchain.info/ru/ticker').then(function (response) {
-                app.curr = response.data.USD;
+                this.getbtc();
 
-            });
-            axios.get('http://www.nbrb.by/API/ExRates/Rates/145')
-                .then(function (response) {
-                    app.nb = response.data;
-                })
+            this.getraterubl()
 
+        },
+        watch:{
+            curr: function (newcurr, oldcurr) {
+                app.curr = newcurr;
+            }
+        },
+        methods: {
+            getbtc(){
+                setInterval(function () {
+                    axios.get('https://blockchain.info/ru/ticker').then(function (response) {
+                        app.curr = response.data.USD;
+
+                    }, 10000);
+                });
+
+            },
+            getraterubl(){
+                axios.get('http://www.nbrb.by/API/ExRates/Rates/145')
+                    .then(function (response) {
+                        app.nb = response.data;
+                    })
+            }
         }
     });
 

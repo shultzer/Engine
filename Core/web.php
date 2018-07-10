@@ -11,4 +11,5 @@
      * */
 
     Application::get('', '\Controllers\Maincontroller@index');
-    Application::get('another', 'Maincontroller@anotheraction');
+    Application::get('remonline', '\Controllers\Maincontroller@remonline');
+    Application::post('remonline', '\Controllers\Maincontroller@remonline');

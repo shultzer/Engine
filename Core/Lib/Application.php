@@ -18,7 +18,7 @@
             $this->url = explode('/', parse_url($_SERVER[ 'REQUEST_URI' ], PHP_URL_PATH));
             isset($this->url[ 1 ]) ? $path = $this->url[ 1 ] : $path = '404';
 
-            if ( $path != '404' && array_key_exists($path, static::$routes[ 'GET' ]) ) {
+            if ( $path != '404' && ( array_key_exists($path, static::$routes[ 'GET' ]) or array_key_exists($path, static::$routes[ 'POST' ]) ) ) {
 
                 list($this->controller, $this->action) = explode('@', static::$routes[ 'GET' ][ $path ]);
 
@@ -26,7 +26,7 @@
             else {
                 header("HTTP/1.0 404 Not Found");
                 include 'views/errors/404.php';
-               die();
+                die();
             }
 
 
@@ -45,11 +45,11 @@
             return $this->url;
         }
 
-        public function run ($db) {
+        public function run () {
             $action     = $this->action;
             $controller = $this->controller;
             $app        = new $controller;
-            $app->$action($db);
+            $app->$action();
         }
 
 

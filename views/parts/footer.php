@@ -19,7 +19,6 @@
 <script>window.jQuery || document.write('<script src="../../../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
 <!--<script src="views/js/popper.min.js"></script>-->
 <script src="views/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
 <script>
     new Vue({

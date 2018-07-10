@@ -1,26 +1,19 @@
 <!doctype html>
 <html lang="en">
 <head>
-
-
-        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-
-
-
     <meta charset="utf-8">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../../../favicon.ico">
+    <link rel="icon" href="/favicon.ico">
     <script src="https://unpkg.com/vue@2.5.13/dist/vue.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.js"></script>
-<style>
-    [v-cloak] {
-        display: none;
-    }
-</style>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
     <title>PHP developer</title>
 
     <!-- Bootstrap core CSS -->
@@ -48,17 +41,18 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="">Home <span class="sr-only">
+                            (current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
+                    <a class="nav-link" href="remonline">Личный кабинет</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link disabled" href="#">Disabled</a>
                 </li>
             </ul>
             <form id="search" class="form-inline mt-2 mt-md-0">
-                <input class="form-control mr-sm-2"  v-model="search"
+                <input class="form-control mr-sm-2" v-model="search"
                        type="text"
                        placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success my-2 my-sm-0"
